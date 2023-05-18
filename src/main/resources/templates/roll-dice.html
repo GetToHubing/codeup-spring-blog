@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="partials/head.html::head"/>
+<body>
+<nav th:replace="partials/navbar.html :: navbar" />
+<h1>Please guess a number between 1 and 6</h1>
+<a href="/roll-dice/1">
+    <button>1</button>
+</a>
+<a href="/roll-dice/2">
+    <button>2</button>
+</a>
+<a href="/roll-dice/3">
+    <button>3</button>
+</a>
+<a href="/roll-dice/4">
+    <button>4</button>
+</a>
+<a href="/roll-dice/5">
+    <button>5</button>
+</a>
+<a href="/roll-dice/6">
+    <button>6</button>
+</a>
+<h2><span th:text="${userGuess}"></span></h2>
+<h2 th:text="${randNum}"></h2>
+<h2 th:text="${correctIncorrect}"></h2>
+<footer th:replace="partials/footer.html:: footer"/>
+</body>
+</html>

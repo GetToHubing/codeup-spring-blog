@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:each="post : ${postlist}">
+    <h1 th:text="${post.getTitle}" />
+    <p th:text="${post.getBody()}" />
+</div>
+
+</body>
+</html>
