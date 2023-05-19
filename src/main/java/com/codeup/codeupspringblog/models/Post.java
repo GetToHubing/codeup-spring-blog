@@ -13,6 +13,7 @@ public class Post {
     @Column(nullable = false)
     private String body;
 
+
     public Post() {
     }
 
