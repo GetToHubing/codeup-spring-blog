@@ -1,7 +1,9 @@
 package com.codeup.codeupspringblog.models;
-
 import jakarta.persistence.*;
+import java.util.List;
 
+@Entity
+@Table(name="user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,7 +16,8 @@ public class User {
     private String password;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private Post post;
+    private List<Post> post;
+
     public User() {}
 
     public User(int id, String username, String email, String password) {

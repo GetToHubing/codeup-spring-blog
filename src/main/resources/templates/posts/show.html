@@ -5,7 +5,9 @@
     <title>Show</title>
 </head>
 <body>
-<p th:text="${post.title}"></p>
+<h1 th:text="${post.title}"></h1>
+<p th:text="${post.body}"></p>
+<p th:text="${user.getEmail()}"></p>
 
 </body>
 </html>
