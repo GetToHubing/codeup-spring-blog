@@ -5,6 +5,7 @@ import com.codeup.codeupspringblog.models.User;
 import com.codeup.codeupspringblog.repositories.PostRepository;
 import com.codeup.codeupspringblog.repositories.UserRepository;
 import com.codeup.codeupspringblog.services.EmailService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -41,6 +42,7 @@ public class PostController {
         model.addAttribute("user", userDao.getReferenceById(1L));
         return "posts/edit";
     }
+
     @PostMapping(path = "/posts/{id}/edit")
     public String postEdit(@ModelAttribute Post post) {
         postDao.save(post);
@@ -56,6 +58,8 @@ public class PostController {
 
     @PostMapping(path = "/posts/create")
     public String postPost(@ModelAttribute Post post) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        post.setUser(user);
         emailService.prepareAndSend(userDao.getReferenceById(1L), post.getTitle(), post.getBody());
         postDao.save(post);
         return "redirect:/posts";

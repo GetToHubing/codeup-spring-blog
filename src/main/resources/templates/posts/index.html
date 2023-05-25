@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+<http pattern="/resources/**" security="none"/>
+
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/test.css}" type="text/css"/>
+
     <title>Title</title>
 </head>
 <body>
+<h1>Latest posts</h1>
 <div th:each="post : ${postlist}">
     <h1 th:text="${post.getTitle}" />
     <p th:text="${post.getBody()}" />

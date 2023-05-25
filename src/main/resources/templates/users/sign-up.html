@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<!-- ... -->
+<div sec:authorize="isAuthenticated()">
+    This content is only shown to authenticated users.
+
+    User ID: <span th:text="${#authentication.principal.id}"/>
+    Username: <span th:text="${#authentication.principal.username}"/>
+    Email: <span th:text="${#authentication.principal.email}"/>
+</div>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Sign up</title>
+</head>
+<body>
+<h1>Create an account</h1>
+<form th:action="@{/sign-up}" method="POST" th:object="${user}">
+    <label for="username">Username</label>
+    <input id="username" th:field="*{username}" />
+
+    <label for="email">Email</label>
+    <input id="email" th:field="*{email}" />
+
+    <label for="password">Password</label>
+    <input id="password" type="password" th:field="*{password}" />
+
+    <input value="Sign me up!" type="submit" />
+</form>
+</body>
+</html>
